@@ -2,6 +2,8 @@ import { Routes, Route } from 'react-router-dom';
 
 import Layout from 'components/Layout';
 import Home from 'pages/Home';
+import Registration from 'pages/Registration';
+import Login from 'pages/Login';
 
 // import { useSelector, useDispatch } from 'react-redux';
 // import { useEffect } from 'react';
@@ -74,12 +76,15 @@ import Home from 'pages/Home';
 // }
 
 function App() {
+ return (
   <Routes>
-    <Route path="/" element={<Layout />}>
-      <Route index element={<Home />}/>
-      <Route path="register" element={<Home />}/>
-    </Route>
-  </Routes>;
+  <Route path="/" element={<Layout />}>
+    <Route index element={<Home />}/>
+    <Route path="login" element={<Login />}/>
+    <Route path="register" element={<Registration />}/>
+  </Route>
+</Routes>
+ )
 }
 
 export default App;
