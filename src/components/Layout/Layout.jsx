@@ -1,35 +1,54 @@
 import { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { selectIsLoggedIn } from 'redux/auth/selectors';
+import { selectTheme } from 'redux/theme/selectors';
+import { Global, ThemeProvider } from '@emotion/react';
+import { GlobalStyles } from 'styles/GlobalStyles';
+import { theme } from 'styles/Theme.styled';
 
 import Loader from 'components/Loader';
 import Navigation from 'components/Navigation';
 import UserMenu from 'components/UserMenu';
 import AuthNav from 'components/AuthNav';
-import {GiNotebook} from 'react-icons/gi'
+import Switcher from 'components/Switcher';
 
-import { Container, HeaderContainer, Header, LogoWrapper, LogoText } from './Layout.styled';
+import {
+  Container,
+  HeaderContainer,
+  Header,
+  LogoWrapper,
+  LogoText,
+  StyledMain,
+  LogoIcon, 
+} from './Layout.styled';
 
 function Layout() {
+  const isLoggedIn = useSelector(selectIsLoggedIn);
+  const themeMode = useSelector(selectTheme);
+
   return (
-    <>
+    <ThemeProvider theme={theme[themeMode]}>
+      <Global styles={GlobalStyles} />
       <Header>
         <HeaderContainer>
           <LogoWrapper>
-            < GiNotebook size='40' color="#00506b"/>
+            <LogoIcon size="40" />
             <LogoText size="50">Phonebook</LogoText>
           </LogoWrapper>
+          <Switcher/>
           <Navigation />
-          {true ? <AuthNav /> : <UserMenu />}
+          {isLoggedIn ? <UserMenu /> : <AuthNav />}
         </HeaderContainer>
       </Header>
-      <main>
+      <StyledMain>
         <Container>
           <Suspense fallback={<Loader />}>
             <Outlet />
           </Suspense>
         </Container>
-      </main>
-    </>
+      </StyledMain>
+    </ThemeProvider>
   );
 }
 

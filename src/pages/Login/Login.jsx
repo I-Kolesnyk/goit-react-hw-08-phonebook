@@ -1,17 +1,15 @@
-import { Link } from "react-router-dom";
+
+import LoginForm from 'components/LoginForm';
+import { FormWrapper, NewUserText, RegisterLink, FormTitle } from './Login.styled';
 
 function Login() {
   return (
-    <div>
-      <form>
-        <input type="email" placeholder="Enter your email" />
-        <input type="password" placeholder="Enter your password" />
-        <button type="submit">Log in</button>
-      </form>
-
-      <p>New user?</p>
-      <Link to="/register">Create your account</Link>
-    </div>
+    <FormWrapper>
+      <FormTitle>Log in</FormTitle>
+      <LoginForm />
+      <NewUserText>New user?</NewUserText>
+      <RegisterLink to="/register">Create your account</RegisterLink>
+    </FormWrapper>
   );
 }
 

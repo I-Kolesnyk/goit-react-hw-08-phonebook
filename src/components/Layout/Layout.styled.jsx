@@ -1,19 +1,22 @@
 import styled from '@emotion/styled';
+import { GiNotebook } from 'react-icons/gi';
 
 export const HeaderContainer = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  max-width: 320px;
-  margin: 0 auto;
-  padding: 0 20px;
-  @media screen and (min-width: 768px) {
-    max-width: 768px;
-    padding: 0 32px;
-  }
-  @media screen and (min-width: 1280px) {
-    max-width: 1280px;
-  }
+  ${({ theme }) => ({
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    maxWidth: '320px',
+    margin: '0 auto',
+    padding: '0 20px',
+    [theme.breakPoints.tablet]: {
+      maxWidth: '768px',
+      padding: '0 32px',
+    },
+    [theme.breakPoints.desktop]: {
+      maxWidth: '1200px',
+    },
+  })} 
 `;
 
 export const Container = styled.div`
@@ -30,7 +33,10 @@ export const Container = styled.div`
 `;
 
 export const Header = styled.header`
-  background-color: #d7fff1;
+  ${({ theme }) => ({
+    backgroundColor: theme.colors.secondaryBackgroundColor,
+    padding: '20px',
+  })}
 `;
 
 export const LogoWrapper = styled.div`
@@ -41,8 +47,25 @@ export const LogoWrapper = styled.div`
 `;
 
 export const LogoText = styled.p`
-  margin: 0;
-  color: #00506b;
-  font-size: 50px;
-  font-weight: 700;
+  ${({ theme }) => ({
+    margin: '0',
+    color: theme.colors.mainColor,
+    fontSize: '50px',
+    fontWeight: theme.fontStyles.fontWeight,
+  })}
+`;
+
+export const StyledMain = styled.main`
+  
+  ${({ theme }) => ({
+    
+    backgroundColor: theme.colors.mainBackgroundColor,
+    
+  })}
+`;
+
+export const LogoIcon = styled(GiNotebook)`
+  color: ${({ theme }) => {
+    return theme.colors.mainColor;
+  }};
 `;

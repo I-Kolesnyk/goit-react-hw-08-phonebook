@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 export const SignInLink = styled(Link)`
   display: block;
   padding: 12px;
+  transform: scale(1);
   text-decoration: none;
   text-align: center;
   font-size: 24px;
@@ -11,10 +12,13 @@ export const SignInLink = styled(Link)`
   color: #00506b;
   border: 2px solid #00506b;
   border-radius: 8px;
+  transition: transform 250ms ease-out, color 250ms ease-out,
+    border 250ms ease-out;
   &:hover,
   &:focus-visible {
     color: coral;
     border: 2px solid coral;
+    transform: scale(1.1);
   }
 `;
 
