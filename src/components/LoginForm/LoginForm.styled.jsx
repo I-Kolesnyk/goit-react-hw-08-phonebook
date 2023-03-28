@@ -52,7 +52,6 @@ export const StyledButton = styled.button`
   width: 100%;
   padding: 12px;
   transform: scale(1);
-  /* background-color: white; */
   color: ${({ theme }) => {
       return theme.colors.mainColor;
     }};
