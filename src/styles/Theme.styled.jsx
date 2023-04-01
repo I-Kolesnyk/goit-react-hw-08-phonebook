@@ -33,7 +33,7 @@ export const dark = {
     fontWeight: '700',
   },
   breakPoints: {
-    mobile: '@media (min-width: 320px)',
+    mobile: '@media (min-width: 480px)',
     tablet: '@media (min-width: 768px)',
     desktop: '@media (min-width: 1200px)',
   },

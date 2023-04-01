@@ -1,10 +1,9 @@
-import { useSelector } from 'react-redux';
+import { useFetchContactsQuery } from 'services/contactsApi';
 import Filter from 'components/Filter';
 import ContactList from 'components/ContactList';
 import Message from 'components/Message';
 import ContactForm from 'components/ContactForm';
 import { ToastWrapper } from 'components/ToastContainer/ToastContainer';
-import { selectContactsItems } from 'redux/contacts/selectors';
 
 import {
   Container,
@@ -14,7 +13,17 @@ import {
 } from './Contacts.styled';
 
 function Contacts() {
-  const contactsItems = useSelector(selectContactsItems);
+   const {
+    data: contacts,   
+  } = useFetchContactsQuery();
+
+  const totalContacts = () => {
+    if (!contacts) {
+      return 0;
+    }
+    return contacts.length;
+  };
+
   return (
     <Container>
       <SectionsContainer>
@@ -24,7 +33,7 @@ function Contacts() {
         </Section>
         <Section>
           <SectionTitle>Contacts</SectionTitle>{' '}
-          {contactsItems.length !== 0 ? (
+          {totalContacts !== 0 ? (
             <>
               <Filter />
               <ContactList />

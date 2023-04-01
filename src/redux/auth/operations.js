@@ -1,5 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
+import { toast } from 'react-toastify';
 
 axios.defaults.baseURL = 'https://connections-api.herokuapp.com';
 
@@ -58,7 +59,7 @@ export const userRefresh = createAsyncThunk(
     const currentToken = state.auth.token;
 
     if (currentToken === null) {
-      return thunkAPI.rejectWithValue(alert('Please log in!'));
+      return thunkAPI.rejectWithValue(toast.info('Please log in!'));
     }
     token.set(currentToken);
 
@@ -66,8 +67,9 @@ export const userRefresh = createAsyncThunk(
       const { data } = await axios.get('/users/current');
       return data;
     } catch (error) {
-      alert('User is not found');
+      toast.error('User is not found');
       return thunkAPI.rejectWithValue(error.code);
     }
   }
 );
+

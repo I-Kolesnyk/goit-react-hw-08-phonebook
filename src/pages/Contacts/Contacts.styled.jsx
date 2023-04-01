@@ -4,15 +4,14 @@ export const Container = styled.div`
   display: flex;
   justify-content: center;
   margin-top: 30px;
-  flex-grow: 1;
 `;
 
 export const SectionsContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
   gap: 40px;
-  justify-content: center;
-  align-items: center;
+  justify-content: center;  
+  flex-grow: 1;
 `;
 
 export const Section = styled.section`
@@ -20,11 +19,15 @@ export const Section = styled.section`
   flex-direction: column;
   align-items: center;
   gap: 30px;
-  width: 500px;
-  height: 570px;
+  max-width: 500px;
+  min-height: 570px;
   padding: 20px;
-  background-color: #d7fff1;
-  border-radius: 10px;
+  background-color: ${({ theme }) => {
+    return theme.colors.secondaryBackgroundColor;
+  }};
+  border-radius: ${({ theme }) => {
+    return theme.borderRadius;
+  }};
   box-shadow: ${({ theme }) => {
     return theme.boxShadow;
   }};
@@ -42,4 +45,7 @@ export const SectionTitle = styled.h2`
   margin-top: 0;
   text-align: center;
   font-size: 28px;
+  color: ${({ theme }) => {
+    return theme.colors.mainColor;
+  }};
 `;

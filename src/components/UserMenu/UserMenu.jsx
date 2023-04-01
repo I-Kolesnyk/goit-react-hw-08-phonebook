@@ -1,11 +1,12 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { selectIsLoggedIn, selectUser } from 'redux/auth/selectors';
 import { userSignOut } from 'redux/auth/operations';
+import { UserName, LogOutButton, UserMenuWrapper } from './UserMenu.styled';
 
 function UserMenu() {
   const isLoggedIn = useSelector(selectIsLoggedIn);
   const user = useSelector(selectUser);
-  const dispatch = useDispatch();  
+  const dispatch = useDispatch();
 
   const handleLogout = () => {
     dispatch(userSignOut());
@@ -13,14 +14,13 @@ function UserMenu() {
   return (
     <>
       {isLoggedIn && (
-        <div>
+        <UserMenuWrapper>
           {/* add interesting icon */}
-          <p>{user.name}</p>
-          <button type="button" onClick={handleLogout}>
-            {' '}
+          <UserName>{user.name}</UserName>
+          <LogOutButton type="button" onClick={handleLogout}>
             Log out
-          </button>
-        </div>
+          </LogOutButton>
+        </UserMenuWrapper>
       )}
     </>
   );

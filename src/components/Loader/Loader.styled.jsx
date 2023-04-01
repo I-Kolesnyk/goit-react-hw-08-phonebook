@@ -6,4 +6,7 @@ export const StyledLoader = styled.div`
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 99;
+  color: ${({ theme }) => {
+    return theme.colors.mainColor;
+  }}
 `;

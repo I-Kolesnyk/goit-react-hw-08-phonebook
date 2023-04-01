@@ -20,7 +20,8 @@ import {
   LogoWrapper,
   LogoText,
   StyledMain,
-  LogoIcon, 
+  LogoIcon,
+  Wrapper,
 } from './Layout.styled';
 
 function Layout() {
@@ -32,11 +33,13 @@ function Layout() {
       <Global styles={GlobalStyles} />
       <Header>
         <HeaderContainer>
-          <LogoWrapper>
-            <LogoIcon size="40" />
-            <LogoText size="50">Phonebook</LogoText>
-          </LogoWrapper>
-          <Switcher/>
+          <Wrapper>
+            <LogoWrapper>
+              <LogoIcon size="40" />
+              <LogoText size="50">Phonebook</LogoText>
+            </LogoWrapper>
+            <Switcher />
+          </Wrapper>
           <Navigation />
           {isLoggedIn ? <UserMenu /> : <AuthNav />}
         </HeaderContainer>

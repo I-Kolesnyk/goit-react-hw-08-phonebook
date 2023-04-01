@@ -4,16 +4,26 @@ export const StyledLabel = styled.label`
   display: flex;
   flex-direction: column;
   gap: 18px;
+  color: ${({ theme }) => {
+    return theme.colors.mainColor;
+  }};
 `;
 
 export const StyledInput = styled.input`
   width: 300px;
-  height: 40px;
+  padding: 12px 12px 12px 15px;
   font-size: 16px;
   border-radius: ${({ theme }) => {
-    return theme.inputBorderRadius;
+    return theme.borderRadius;
   }};
-  border: ${({ theme }) => {
-    return theme.buttonBorder;
+  border: 2px solid
+    ${({ theme }) => {
+      return theme.colors.mainColor;
+    }};
+    background-color: ${({ theme }) => {
+    return theme.colors.mainBackgroundColor;
+  }};
+  color: ${({ theme }) => {
+    return theme.colors.mainColor;
   }};
 `;

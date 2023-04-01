@@ -7,7 +7,7 @@ export const Container = styled.div`
   justify-content: center;
   align-items: center;
   gap: 30px;
-  max-width: 320px;
+  max-width: 480px;
   margin: 30px auto;
   padding: 0 20px;
   @media screen and (min-width: 768px) {
@@ -26,21 +26,49 @@ export const Main = styled.main `
 export const HomeLink = styled(NavLink)`
   display: flex;
   justify-content: center;
-  align-items: center;
-  width: 100px;
-  height: 40px;
-  text-decoration: none;
-  background-color: navy;
-  color: yellow;
-  border-radius: 10px;
+  align-items: center;  
+  padding: 12px;  
+  transform: scale(1);
+  color: ${({ theme }) => {
+    return theme.colors.mainColor;
+  }};
+  border: 2px solid ${({ theme }) => {
+    return theme.colors.mainColor;
+  }};
+  border-radius: ${({ theme }) => {
+    return theme.borderRadius;
+  }}; 
+  font-size: 24px;
+  font-weight: ${({ theme }) => {
+    return theme.fontStyles.fontWeight;
+  }}; 
   transition: color 250ms linear, background-color 250ms linear;
   &:hover,
   &:focus-visible {
-    background-color: yellow;
-    color: navy;
+    color: ${({ theme }) => {
+    return theme.colors.accentColor;
+  }};
+    border: 2px solid ${({ theme }) => {
+    return theme.colors.accentColor;
+  }};
+  transform: scale(1.1);
   }
 `;
 
 export const Image = styled.img`
-  width: 400px;
+  width: 600px;
 `;
+
+export const ErrorMessage = styled.p`
+  margin: 0;
+  font-size: ${({ theme }) => {
+    return theme.fontStyles.size;
+  }};
+  font-weight: ${({ theme }) => {
+    return theme.fontStyles.fontWeight;
+  }};
+  color: ${({ theme }) => {
+    return theme.colors.mainColor;
+  }};
+  text-transform: uppercase;
+`

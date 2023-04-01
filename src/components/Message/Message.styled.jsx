@@ -6,14 +6,18 @@ export const MessageText = styled.p`
   align-items: center;
   margin: 0;
   font-size: 24px;
-  width: 500px;
-  height: 70px;
-  background-color: white;
-  border-radius: ${({ theme }) => {
-    return theme.inputBorderRadius;
+  width: 90%;  
+  background-color: ${({ theme }) => {
+    return theme.colors.mainBackgroundColor;
   }};
-  border: ${({ theme }) => {
-    return theme.buttonBorder;
+  color: ${({ theme }) => {
+    return theme.colors.mainColor;
+  }};
+  border-radius: ${({ theme }) => {
+    return theme.borderRadius;
+  }};
+  border: 2px solid ${({ theme }) => {
+    return theme.colors.mainColor;
   }};
   text-align: center;
 `;

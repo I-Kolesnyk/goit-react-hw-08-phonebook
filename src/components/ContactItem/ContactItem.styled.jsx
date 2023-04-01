@@ -4,33 +4,41 @@ export const ListItem = styled.li`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 400px;
-  height: 40px;
-  padding: 5px;
-  font-size: 16px;
-  background-color: white;
+  max-width: 400px; 
+  padding: 12px;
+  font-size: 16px;  
   border-radius: ${({ theme }) => {
-    return theme.inputBorderRadius;
+    return theme.borderRadius;
   }};
-  border: ${({ theme }) => {
-    return theme.buttonBorder;
+  background-color: ${({ theme }) => {
+    return theme.colors.mainBackgroundColor;
   }};
+  color: ${({ theme }) => {
+    return theme.colors.mainColor;
+  }};  
 `;
+
+export const ContactInfo = styled.p`
+  margin: 0;
+`
 
 export const StyledButton = styled.button`
   width: 70px;
   height: 40px;
   transform: scale(1);
   background-color: ${({ theme }) => {
-    return theme.colors.buttonBackgroundColor;
+    return theme.colors.mainColor;
   }};
   border-radius: ${({ theme }) => {
-    return theme.buttonBorderRadius;
+    return theme.borderRadius;
   }};
-  border: ${({ theme }) => {
-    return theme.buttonBorder;
+  border: 2px solid
+    ${({ theme }) => {
+      return theme.colors.mainColor;
+    }};
+    color: ${({ theme }) => {
+    return theme.colors.mainBackgroundColor;
   }};
-
   font-size: 14px;
   transition: transform 250ms ease-out, background-color 250ms ease-out;
   &:hover,

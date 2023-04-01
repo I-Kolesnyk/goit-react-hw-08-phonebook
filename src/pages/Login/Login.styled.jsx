@@ -9,38 +9,39 @@ export const FormWrapper = styled.div`
 `;
 
 export const FormTitle = styled.h1`
-    
-    ${({ theme }) => ({
+  ${({ theme }) => ({
     margin: 0,
+    marginTop: '20px', 
     color: theme.colors.mainColor,
-    
   })}
-`
+`;
 
 export const NewUserText = styled.p`
-  color: #00506b;
-  font-size: 18px;
+  ${({ theme }) => ({
+    marginTop: '20px',
+    color: theme.colors.mainColor,
+    fontSize: theme.fontStyles.size,
+  })}
 `;
 
 export const RegisterLink = styled(Link)`
   display: block;
   width: 280px;
   padding: 12px;
-  transform: scale(1);
-  text-decoration: none;
-  color: #00506b;
-  font-size: 18px;
-  font-weight: 700;
+  transform: scale(1);  
+  color: ${({theme}) => {return theme.colors.mainColor}};
+  font-size: ${({theme}) => {return theme.fontStyles.size}};
+  font-weight: ${({theme}) => {return theme.fontStyles.fontWeight}};
   text-align: center;
-  color: #00506b;
-  border: 2px solid #00506b;
-  border-radius: 8px;
+  color: ${({theme}) => {return theme.colors.mainColor}};  
+  border: 2px solid ${({theme}) => {return theme.colors.mainColor}};
+  border-radius: ${({theme}) => {return theme.borderRadius}};
   transition: transform 250ms ease-out, color 250ms ease-out,
     border 250ms ease-out;
   &:hover,
   &:focus-visible {
-    color: #71238a;
-    border: 2px solid #71238a;
+    color: ${({theme}) => {return theme.colors.accentColor}};
+    border: 2px solid ${({theme}) => {return theme.colors.accentColor}};
     transform: scale(1.1);
   }
 `;

@@ -5,20 +5,30 @@ export const SignInLink = styled(Link)`
   display: block;
   padding: 12px;
   transform: scale(1);
-  text-decoration: none;
   text-align: center;
   font-size: 24px;
-  font-weight: 700;
-  color: #00506b;
-  border: 2px solid #00506b;
-  border-radius: 8px;
+  font-weight: ${({ theme }) => {
+    return theme.fontStyles.fontWeight;
+  }};
+  color: ${({ theme }) => {
+    return theme.colors.mainColor;
+  }};
+  border: 2px solid
+    ${({ theme }) => {
+      return theme.colors.mainColor;
+    }};
+  border-radius: ${({ theme }) => {
+    return theme.borderRadius;
+  }};
   transition: transform 250ms ease-out, color 250ms ease-out,
     border 250ms ease-out;
   &:hover,
   &:focus-visible {
-    color: coral;
-    border: 2px solid coral;
-    transform: scale(1.1);
+    ${({ theme }) => ({
+      color: theme.colors.accentColor,
+      border: `2px solid ${theme.colors.accentColor}`,
+      transform: 'scale(1.1)'
+    })}    
   }
 `;
 
@@ -31,19 +41,24 @@ export const RegisterLinkWrapper = styled.div`
 `;
 
 export const RegisterLinkMessage = styled.p`
-  margin: 0;
-  font-size: 18px;
-  color: #00506b;
+  ${({ theme }) => ({
+    margin: 0,
+    fontSize: theme.fontStyles.size,
+    color: theme.colors.mainColor,
+  })}
 `;
 
 export const RegisterLink = styled(Link)`
-  text-decoration: none;
-  font-size: 18px;
-  font-weight: 700;
-  color: #00506b;
-  transition: color 250ms ease-out;
+  ${({ theme }) => ({
+    fontSize: theme.fontStyles.size,
+    fontWeight: theme.fontStyles.fontWeight,
+    color: theme.colors.mainColor,
+    transition: 'color 250ms ease-out',
+  })}
   &:hover,
   &:focus-visible {
-    color: coral;
+    ${({ theme }) => ({
+      color: theme.colors.accentColor,
+    })}
   }
 `;

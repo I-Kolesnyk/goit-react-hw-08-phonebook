@@ -15,8 +15,6 @@ import {
 const emailRegex =
   /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
-const passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/;
-
 const schema = yup.object().shape({
   name: yup.string().trim().required('Name is required'),
   email: yup.string().trim().required('Email is required').matches(emailRegex, {
@@ -26,11 +24,7 @@ const schema = yup.object().shape({
     .string()
     .trim()
     .required('Password is required')
-    .min(8)
-    .matches(passwordRegex, {
-      message:
-        'Password should contain at least 1 number, one lowercase character (a-z), one uppercase character (A-Z), and at least 8 symbols ',
-    }),
+    .min(8),
 });
 
 function RegistrationForm() {
@@ -87,7 +81,7 @@ function RegistrationForm() {
       </StyledLabel>
 
       <StyledLabel>
-        Number
+        Password
         <StyledInput
           type="password"
           placeholder="Enter your password"

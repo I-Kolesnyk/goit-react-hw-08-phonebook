@@ -4,7 +4,6 @@ export const StyledForm = styled.form`
   display: flex;
   flex-direction: column;
   align-items: center;
-
   gap: 30px;
   width: 65%;
 `;
@@ -13,17 +12,25 @@ export const StyledLabel = styled.label`
   display: flex;
   flex-direction: column;
   gap: 18px;
+  color: ${({ theme }) => {
+    return theme.colors.mainColor;
+  }};
   div {
-    padding: 8px;
-    border: ${({ theme }) => {
-      return theme.buttonBorder;
+    padding: 12px;
+    border: 2px solid  ${({ theme }) => {
+      return theme.colors.mainColor;
     }};
     border-radius: ${({ theme }) => {
-      return theme.inputBorderRadius;
+      return theme.borderRadius;
     }};
-    background-color: #ffc4c4;
-    width: 288px;
-    font-size: 14px;
+    background-color: ${({ theme }) => {
+    return theme.colors.accentColor;
+  }};
+  color: ${({ theme }) => {
+      return theme.colors.secondaryBackgroundColor;
+    }};
+    width: calc(100%);
+    font-size: 16px;
     &::first-letter {
       text-transform: uppercase;
     }
@@ -31,38 +38,61 @@ export const StyledLabel = styled.label`
 `;
 
 export const StyledInput = styled.input`
-  width: 300px;
-  height: 40px;
+  width: 300px;  
+  padding: 12px 12px 12px 15px;
   font-size: 16px;
   border-radius: ${({ theme }) => {
-    return theme.inputBorderRadius;
+    return theme.borderRadius;
   }};
-  border: ${({ theme }) => {
-    return theme.buttonBorder;
+  border: 2px solid
+    ${({ theme }) => {
+      return theme.colors.mainColor;
+    }};
+     background-color: ${({ theme }) => {
+    return theme.colors.mainBackgroundColor;
+  }};
+   color: ${({ theme }) => {
+    return theme.colors.mainColor;
   }};
   &::placeholder {
     font-size: 16px;
+    color: ${({ theme }) => {
+    return theme.colors.mainColor;
+  }};
   }
 `;
 
-export const StyledButton = styled.input`
-  width: 150px;
-  height: 40px;
+export const StyledButton = styled.button`
+  width: 100%;
+  padding: 12px;
   transform: scale(1);
-  background-color: ${({ theme }) => {
-    return theme.colors.buttonBackgroundColor;
+  color: ${({ theme }) => {
+    return theme.colors.mainColor;
   }};
   border-radius: ${({ theme }) => {
-    return theme.buttonBorderRadius;
+    return theme.borderRadius;
   }};
-  border: ${({ theme }) => {
-    return theme.buttonBorder;
+  border: 2px solid ${({ theme }) => {
+    return theme.colors.mainColor;
   }};
-
-  font-size: 16px;
+  font-size: ${({ theme }) => {
+    return theme.fontStyles.size;
+  }};
+  font-weight: ${({ theme }) => {
+    return theme.fontStyles.fontWeight;
+  }};
+  background-color: ${({ theme }) => {
+    return theme.colors.mainBackgroundColor;
+  }};
   transition: transform 250ms ease-out, background-color 250ms ease-out;
   &:hover,
   &:focus-visible {
+    color: ${({ theme }) => {
+      return theme.colors.accentColor;
+    }};
+    border: 2px solid ${({ theme }) => {
+    return theme.colors.accentColor;
+  }};
     transform: scale(1.1);
   }
 `;

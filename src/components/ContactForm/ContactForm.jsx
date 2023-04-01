@@ -3,9 +3,7 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { toast } from 'react-toastify';
-import { useDispatch, useSelector } from 'react-redux';
-import { selectContactsItems } from 'redux/contacts/selectors';
-import { saveContact } from 'redux/contacts/operations';
+import { useAddContactMutation, useFetchContactsQuery } from 'services/contactsApi';
 
 import {
   StyledLabel,
@@ -42,8 +40,8 @@ const schema = yup.object().shape({
 });
 
 function ContactForm() {
-  const dispatch = useDispatch();
-  const contactsItems = useSelector(selectContactsItems);
+  const { data: contacts } = useFetchContactsQuery();
+  const [addContact] = useAddContactMutation();
   const {
     register,
     handleSubmit,
@@ -65,16 +63,21 @@ function ContactForm() {
     }
   }, [formState.isSubmitSuccessful, reset]);
 
-  const addNewContact = data => {
+  const addNewContact = async data => {
     const normalizedName = data.name.toLowerCase();
 
     if (
-      contactsItems.find(item => item.name.toLowerCase() === normalizedName)
+      contacts.find(item => item.name.toLowerCase() === normalizedName)
     ) {
       return toast.info(`${data.name} is already in contacts!`);
     }
-
-    dispatch(saveContact(data));    
+    try {
+      await addContact(data);
+      toast.info('New contact has been added in your phone book');
+    } catch (error) {
+      console.log(error.message);
+      toast.error('Something has happened, new contact was not added');
+    }       
   };
 
   return (
@@ -101,7 +104,7 @@ function ContactForm() {
         {errors.number && <div>{errors.number?.message}</div>}
       </StyledLabel>
 
-      <StyledButton type="submit" />
+      <StyledButton type="submit" >Send</StyledButton>
     </StyledForm>
   );
 }

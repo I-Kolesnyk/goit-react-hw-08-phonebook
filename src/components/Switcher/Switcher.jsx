@@ -4,38 +4,38 @@ import { BsSun, BsMoon } from 'react-icons/bs';
 import { selectTheme } from 'redux/theme/selectors';
 import { setTheme } from 'redux/theme/slice';
 
-function Switcher () {
-    const themeMode = useSelector(selectTheme);
-    const dispatch = useDispatch();
+const switcherTheme = {
+  token: {
+    colorPrimary: '#d7fff1',
+    colorTextTertiary: '#00506b',
+    fontSize: 26,
+  },
+};
 
-    const themeToggle = () => {
-        if (themeMode === 'light') {
-          dispatch(setTheme('dark'));
-        } else {
-          dispatch(setTheme('light'));
-        }
-      };
+function Switcher() {
+  const themeMode = useSelector(selectTheme);
+  const dispatch = useDispatch();
 
-    return (
-        <ConfigProvider
-            theme={{
-              token: {
-                colorPrimary: '#d7fff1',
-                colorTextTertiary: '#00506b',
-                fontSize: 26,
-              },
-            }}
-          >
-            <Space direction="vertical">
-              <Switch
-                checkedChildren={<BsSun color="#00506b" />}
-                unCheckedChildren={<BsMoon color="#d7fff1" />}
-                defaultChecked={false}
-                onChange={themeToggle}
-              />
-            </Space>
-          </ConfigProvider>
-    )
+  const themeToggle = () => {
+    if (themeMode === 'light') {
+      dispatch(setTheme('dark'));
+    } else {
+      dispatch(setTheme('light'));
+    }
+  };
+
+  return (
+    <ConfigProvider theme={switcherTheme}>
+      <Space direction="vertical">
+        <Switch
+          checkedChildren={<BsSun color="#00506b" />}
+          unCheckedChildren={<BsMoon color="#d7fff1" />}
+          defaultChecked={false}
+          onChange={themeToggle}
+        />
+      </Space>
+    </ConfigProvider>
+  );
 }
 
 export default Switcher;
