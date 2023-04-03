@@ -8,12 +8,12 @@ export const light = {
   },
   fontStyles: {
     size: '18px',
-    fontWeight: '700',
+    weight: '700',
   },
   breakPoints: {
-    mobile: '@media (min-width: 320px)',
-    tablet: '@media (min-width: 768px)',
-    desktop: '@media (min-width: 1200px)',
+    mobile: '@media screen and (min-width: 320px)',
+    tablet: '@media screen and (min-width: 768px)',
+    desktop: '@media screen and (min-width: 1200px)',
   },
   borderRadius: '8px',
   boxShadow:
@@ -30,10 +30,10 @@ export const dark = {
   },
   fontStyles: {
     size: '18px',
-    fontWeight: '700',
+    weight: '700',
   },
   breakPoints: {
-    mobile: '@media (min-width: 480px)',
+    mobile: '@media (min-width: 320px)',
     tablet: '@media (min-width: 768px)',
     desktop: '@media (min-width: 1200px)',
   },
@@ -46,3 +46,9 @@ export const theme = {
   dark,
   light,
 };
+
+// const breakpoints = [320, 768, 1200]
+
+// export const mq = breakpoints.map(
+//   bp => `@media (min-width: ${bp}px)`
+// )

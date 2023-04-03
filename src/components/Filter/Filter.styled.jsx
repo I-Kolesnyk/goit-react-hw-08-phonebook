@@ -13,14 +13,14 @@ export const StyledInput = styled.input`
   width: 300px;
   padding: 12px 12px 12px 15px;
   font-size: 16px;
-  border-radius: ${({ theme }) => {
-    return theme.borderRadius;
-  }};
   border: 2px solid
     ${({ theme }) => {
       return theme.colors.mainColor;
     }};
-    background-color: ${({ theme }) => {
+  border-radius: ${({ theme }) => {
+    return theme.borderRadius;
+  }};
+  background-color: ${({ theme }) => {
     return theme.colors.mainBackgroundColor;
   }};
   color: ${({ theme }) => {

@@ -10,7 +10,7 @@ export const SectionsContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
   gap: 40px;
-  justify-content: center;  
+  justify-content: center;
   flex-grow: 1;
 `;
 
@@ -42,7 +42,7 @@ export const Title = styled.h1`
 `;
 
 export const SectionTitle = styled.h2`
-  margin-top: 0;
+  margin: 0;
   text-align: center;
   font-size: 28px;
   color: ${({ theme }) => {

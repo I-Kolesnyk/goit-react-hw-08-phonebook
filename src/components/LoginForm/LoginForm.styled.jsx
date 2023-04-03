@@ -35,12 +35,12 @@ export const StyledLabel = styled.label`
       return theme.borderRadius;
     }};
     background-color: ${({ theme }) => {
-      return theme.colors.accentColor;
+      return theme.colors.accentBackgroundColor;
     }};
     color: ${({ theme }) => {
       return theme.colors.secondaryBackgroundColor;
     }};
-    width: calc(100%);
+    width: 100%;
     font-size: 16px;
     &::first-letter {
       text-transform: uppercase;
@@ -65,8 +65,8 @@ export const StyledInput = styled.input`
   &::placeholder {
     font-size: 16px;
     color: ${({ theme }) => {
-    return theme.colors.mainColor;
-  }};
+      return theme.colors.mainColor;
+    }};
   }
 `;
 
@@ -77,17 +77,18 @@ export const StyledButton = styled.button`
   color: ${({ theme }) => {
     return theme.colors.mainColor;
   }};
+  border: 2px solid
+    ${({ theme }) => {
+      return theme.colors.mainColor;
+    }};
   border-radius: ${({ theme }) => {
     return theme.borderRadius;
-  }};
-  border: 2px solid ${({ theme }) => {
-    return theme.colors.mainColor;
   }};
   font-size: ${({ theme }) => {
     return theme.fontStyles.size;
   }};
   font-weight: ${({ theme }) => {
-    return theme.fontStyles.fontWeight;
+    return theme.fontStyles.weight;
   }};
   background-color: ${({ theme }) => {
     return theme.colors.mainBackgroundColor;
@@ -96,12 +97,13 @@ export const StyledButton = styled.button`
     border 250ms ease-out;
   &:hover,
   &:focus-visible {
-    color: ${({ theme }) => {
+    ${({ theme }) => {
       return theme.colors.accentColor;
     }};
-    border: 2px solid ${({ theme }) => {
-    return theme.colors.accentColor;
-  }};
+    border: 2px solid
+      ${({ theme }) => {
+        return theme.colors.accentColor;
+      }};
     transform: scale(1.1);
   }
 `;

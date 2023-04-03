@@ -1,27 +1,21 @@
 import styled from '@emotion/styled';
 
 export const UserMenuWrapper = styled.div`
-  ${({ theme }) => {
-    return theme.breakPoints.mobile;
-  }} {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 50px;
-    font-size: 14px;
-  }
-
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+  font-size: 14px;
   ${({ theme }) => {
     return theme.breakPoints.tablet;
   }} {
-    font-size: 14px;
     gap: 10px;
   }
   ${({ theme }) => {
     return theme.breakPoints.desktop;
   }} {
-    font-size: 20px;
     gap: 20px;
+    font-size: 20px;
   }
 `;
 
@@ -31,7 +25,7 @@ export const UserName = styled.p`
     return theme.fontStyles.size;
   }};
   font-weight: ${({ theme }) => {
-    return theme.fontStyles.fontWeight;
+    return theme.fontStyles.weight;
   }};
   color: ${({ theme }) => {
     return theme.colors.mainColor;
@@ -55,11 +49,10 @@ export const LogOutButton = styled.button`
   display: block;
   padding: 12px;
   transform: scale(1);
-  text-decoration: none;
   text-align: center;
   font-size: 24px;
   font-weight: ${({ theme }) => {
-    return theme.fontStyles.fontWeight;
+    return theme.fontStyles.weight;
   }};
   color: ${({ theme }) => {
     return theme.colors.mainColor;
@@ -83,15 +76,15 @@ export const LogOutButton = styled.button`
         return theme.colors.accentColor;
       }};
     transform: scale(1.1);
-  }
-  ${({ theme }) => {
-    return theme.breakPoints.tablet;
-  }} {
-    font-size: 14px;
-  }
-  ${({ theme }) => {
-    return theme.breakPoints.desktop;
-  }} {
-    font-size: 24px;
+    ${({ theme }) => {
+      return theme.breakPoints.tablet;
+    }} {
+      font-size: 14px;
+    }
+    ${({ theme }) => {
+      return theme.breakPoints.desktop;
+    }} {
+      font-size: 24px;
+    }
   }
 `;

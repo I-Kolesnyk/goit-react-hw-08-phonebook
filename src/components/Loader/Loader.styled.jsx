@@ -8,5 +8,5 @@ export const StyledLoader = styled.div`
   z-index: 99;
   color: ${({ theme }) => {
     return theme.colors.mainColor;
-  }}
+  }};
 `;

@@ -4,11 +4,11 @@ import { Link } from 'react-router-dom';
 export const SignInLink = styled(Link)`
   display: block;
   padding: 12px;
-  transform: scale(1);
+  transform: scale(1.1);
   text-align: center;
   font-size: 24px;
   font-weight: ${({ theme }) => {
-    return theme.fontStyles.fontWeight;
+    return theme.fontStyles.weight;
   }};
   color: ${({ theme }) => {
     return theme.colors.mainColor;
@@ -24,11 +24,13 @@ export const SignInLink = styled(Link)`
     border 250ms ease-out;
   &:hover,
   &:focus-visible {
-    ${({ theme }) => ({
-      color: theme.colors.accentColor,
-      border: `2px solid ${theme.colors.accentColor}`,
-      transform: 'scale(1.1)'
-    })}    
+    color: ${({ theme }) => {
+      return theme.colors.accentColor;
+    }};
+    border: 2px solid
+      ${({ theme }) => {
+        return theme.colors.accentColor;
+      }};
   }
 `;
 
@@ -41,24 +43,30 @@ export const RegisterLinkWrapper = styled.div`
 `;
 
 export const RegisterLinkMessage = styled.p`
-  ${({ theme }) => ({
-    margin: 0,
-    fontSize: theme.fontStyles.size,
-    color: theme.colors.mainColor,
-  })}
+  margin: 0;
+  font-size: ${({ theme }) => {
+    return theme.fontStyles.size;
+  }};
+  color: ${({ theme }) => {
+    return theme.colors.mainColor;
+  }};
 `;
 
 export const RegisterLink = styled(Link)`
-  ${({ theme }) => ({
-    fontSize: theme.fontStyles.size,
-    fontWeight: theme.fontStyles.fontWeight,
-    color: theme.colors.mainColor,
-    transition: 'color 250ms ease-out',
-  })}
+  font-size: ${({ theme }) => {
+    return theme.fontStyles.size;
+  }};
+  font-weight: ${({ theme }) => {
+    return theme.fontStyles.weight;
+  }};
+  color: ${({ theme }) => {
+    return theme.colors.mainColor;
+  }};
+  transition: color 250ms ease-out;
   &:hover,
   &:focus-visible {
-    ${({ theme }) => ({
-      color: theme.colors.accentColor,
-    })}
+    color: ${({ theme }) => {
+      return theme.colors.accentColor;
+    }};
   }
 `;

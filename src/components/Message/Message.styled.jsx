@@ -6,7 +6,7 @@ export const MessageText = styled.p`
   align-items: center;
   margin: 0;
   font-size: 24px;
-  width: 90%;  
+  width: 90%;
   background-color: ${({ theme }) => {
     return theme.colors.mainBackgroundColor;
   }};
@@ -16,8 +16,9 @@ export const MessageText = styled.p`
   border-radius: ${({ theme }) => {
     return theme.borderRadius;
   }};
-  border: 2px solid ${({ theme }) => {
-    return theme.colors.mainColor;
-  }};
+  border: 2px solid
+    ${({ theme }) => {
+      return theme.colors.mainColor;
+    }};
   text-align: center;
 `;

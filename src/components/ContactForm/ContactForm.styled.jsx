@@ -17,19 +17,17 @@ export const StyledLabel = styled.label`
   }};
   div {
     padding: 12px;
-    border: 2px solid  ${({ theme }) => {
-      return theme.colors.mainColor;
-    }};
+    border: 2px solid
+      ${({ theme }) => {
+        return theme.colors.mainColor;
+      }};
     border-radius: ${({ theme }) => {
       return theme.borderRadius;
     }};
     background-color: ${({ theme }) => {
-    return theme.colors.accentColor;
-  }};
-  color: ${({ theme }) => {
-      return theme.colors.secondaryBackgroundColor;
+      return theme.colors.accentColor;
     }};
-    width: calc(100%);
+    width: 100%;
     font-size: 16px;
     &::first-letter {
       text-transform: uppercase;
@@ -38,7 +36,7 @@ export const StyledLabel = styled.label`
 `;
 
 export const StyledInput = styled.input`
-  width: 300px;  
+  width: 300px;
   padding: 12px 12px 12px 15px;
   font-size: 16px;
   border-radius: ${({ theme }) => {
@@ -48,17 +46,17 @@ export const StyledInput = styled.input`
     ${({ theme }) => {
       return theme.colors.mainColor;
     }};
-     background-color: ${({ theme }) => {
+  background-color: ${({ theme }) => {
     return theme.colors.mainBackgroundColor;
   }};
-   color: ${({ theme }) => {
+  color: ${({ theme }) => {
     return theme.colors.mainColor;
   }};
   &::placeholder {
-    font-size: 16px;
     color: ${({ theme }) => {
-    return theme.colors.mainColor;
-  }};
+      return theme.colors.mainColor;
+    }};
+    font-size: 16px;
   }
 `;
 
@@ -72,14 +70,15 @@ export const StyledButton = styled.button`
   border-radius: ${({ theme }) => {
     return theme.borderRadius;
   }};
-  border: 2px solid ${({ theme }) => {
-    return theme.colors.mainColor;
-  }};
+  border: 2px solid
+    ${({ theme }) => {
+      return theme.colors.mainColor;
+    }};
   font-size: ${({ theme }) => {
     return theme.fontStyles.size;
   }};
   font-weight: ${({ theme }) => {
-    return theme.fontStyles.fontWeight;
+    return theme.fontStyles.weight;
   }};
   background-color: ${({ theme }) => {
     return theme.colors.mainBackgroundColor;
@@ -90,9 +89,10 @@ export const StyledButton = styled.button`
     color: ${({ theme }) => {
       return theme.colors.accentColor;
     }};
-    border: 2px solid ${({ theme }) => {
-    return theme.colors.accentColor;
-  }};
+    border: 2px solid
+      ${({ theme }) => {
+        return theme.colors.accentColor;
+      }};
     transform: scale(1.1);
   }
 `;

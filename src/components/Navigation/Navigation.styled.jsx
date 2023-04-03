@@ -2,35 +2,24 @@ import styled from '@emotion/styled';
 import { NavLink } from 'react-router-dom';
 
 export const StyledNavigation = styled.nav`
-  ${({ theme }) => {
-    return theme.breakPoints.mobile;
-  }} {
-    font-size: 24px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 50px;
-  }
-  ${({ theme }) => {
-    return theme.breakPoints.tablet;
-  }} {
-    font-size: 24px;
-    display: flex;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 50px;
+  @media screen and (min-width: 768px) {
     justify-content: center;
-    align-items: center;
     gap: 30px;
   }
 `;
 
 export const NavigationLink = styled(NavLink)`
-  transform: scale(1);
-  text-decoration: none;
-  font-size: 24px;
-  font-weight: ${({ theme }) => {
-    return theme.fontStyles.fontWeight;
-  }};
   color: ${({ theme }) => {
     return theme.colors.mainColor;
+  }};
+  transform: scale(1);
+  font-size: 24px;
+  font-weight: ${({ theme }) => {
+    return theme.fontStyles.weight;
   }};
   transition: color 250ms ease-out, transform 250ms ease-out;
   &:hover,
@@ -45,20 +34,18 @@ export const NavigationLink = styled(NavLink)`
     }};
     &:hover,
     &:focus-visible {
+      transform: scale(1.1);
       color: ${({ theme }) => {
         return theme.colors.mainColor;
       }};
-      transform: scale(1.1);
+      @media screen and (min-width: 768px) {
+        font-size: ${({ theme }) => {
+          return theme.fontStyles.size;
+        }};
+      }
+      @media screen and (min-width: 1200px) {
+        font-size: 24px;
+      }
     }
-  }
-  ${({ theme }) => {
-    return theme.breakPoints.tablet;
-  }} {
-    font-size: 18px;
-  }
-  ${({ theme }) => {
-    return theme.breakPoints.desktop;
-  }} {
-    font-size: 24px;
   }
 `;
