@@ -1,12 +1,26 @@
 import styled from '@emotion/styled';
+import { css } from '@emotion/react';
 
-export const StyledLoader = styled.div`
-  position: fixed;
+const styledLoaderDynamicStyle = ({theme}) => css`
+   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 99;
-  color: ${({ theme }) => {
-    return theme.colors.mainColor;
-  }};
-`;
+  color: ${theme.colors.mainColor};
+`
+
+// export const StyledLoader = styled.div`
+//   position: fixed;
+//   top: 50%;
+//   left: 50%;
+//   transform: translate(-50%, -50%);
+//   z-index: 99;
+//   color: ${({ theme }) => {
+//     return theme.colors.mainColor;
+//   }};
+// `;
+
+export const StyledLoader = styled.div`
+  ${styledLoaderDynamicStyle}
+`

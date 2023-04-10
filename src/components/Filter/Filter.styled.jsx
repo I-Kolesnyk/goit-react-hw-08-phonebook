@@ -1,29 +1,54 @@
 import styled from '@emotion/styled';
+import { css } from '@emotion/react';
 
-export const StyledLabel = styled.label`
+const styledLabelDynamicStyle = ({ theme }) => css`
   display: flex;
   flex-direction: column;
   gap: 18px;
-  color: ${({ theme }) => {
-    return theme.colors.mainColor;
-  }};
+  color: ${theme.colors.mainColor};
 `;
 
-export const StyledInput = styled.input`
+// export const StyledLabel = styled.label`
+//   display: flex;
+//   flex-direction: column;
+//   gap: 18px;
+//   color: ${({ theme }) => {
+//     return theme.colors.mainColor;
+//   }};
+// `;
+const styledInputDynamicStyle = ({ theme }) => css`
   width: 300px;
   padding: 12px 12px 12px 15px;
   font-size: 16px;
-  border: 2px solid
-    ${({ theme }) => {
-      return theme.colors.mainColor;
-    }};
-  border-radius: ${({ theme }) => {
-    return theme.borderRadius;
-  }};
-  background-color: ${({ theme }) => {
-    return theme.colors.mainBackgroundColor;
-  }};
-  color: ${({ theme }) => {
-    return theme.colors.mainColor;
-  }};
+  border: 2px solid ${theme.colors.mainColor};
+  border-radius: ${theme.borderRadius};
+  background-color: ${theme.colors.mainBackgroundColor};
+  color: ${theme.colors.mainColor};
+`;
+
+// export const StyledInput = styled.input`
+//   width: 300px;
+//   padding: 12px 12px 12px 15px;
+//   font-size: 16px;
+//   border: 2px solid
+//     ${({ theme }) => {
+//       return theme.colors.mainColor;
+//     }};
+//   border-radius: ${({ theme }) => {
+//     return theme.borderRadius;
+//   }};
+//   background-color: ${({ theme }) => {
+//     return theme.colors.mainBackgroundColor;
+//   }};
+//   color: ${({ theme }) => {
+//     return theme.colors.mainColor;
+//   }};
+// `;
+
+export const StyledLabel = styled.label`
+  ${styledLabelDynamicStyle}
+`;
+
+export const StyledInput = styled.input`
+  ${styledInputDynamicStyle}
 `;

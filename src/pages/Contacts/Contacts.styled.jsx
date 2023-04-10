@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import { css } from '@emotion/react';
 
 export const Container = styled.div`
   display: flex;
@@ -14,7 +15,7 @@ export const SectionsContainer = styled.div`
   flex-grow: 1;
 `;
 
-export const Section = styled.section`
+const sectionDynamicStyle = ({ theme }) => css`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -22,16 +23,29 @@ export const Section = styled.section`
   max-width: 500px;
   min-height: 570px;
   padding: 20px;
-  background-color: ${({ theme }) => {
-    return theme.colors.secondaryBackgroundColor;
-  }};
-  border-radius: ${({ theme }) => {
-    return theme.borderRadius;
-  }};
-  box-shadow: ${({ theme }) => {
-    return theme.boxShadow;
-  }};
+  background-color: ${theme.colors.secondaryBackgroundColor};
+  border-radius: ${theme.borderRadius};
+  box-shadow: ${theme.boxShadow};
 `;
+
+// export const Section = styled.section`
+//   display: flex;
+//   flex-direction: column;
+//   align-items: center;
+//   gap: 30px;
+//   max-width: 500px;
+//   min-height: 570px;
+//   padding: 20px;
+//   background-color: ${({ theme }) => {
+//     return theme.colors.secondaryBackgroundColor;
+//   }};
+//   border-radius: ${({ theme }) => {
+//     return theme.borderRadius;
+//   }};
+//   box-shadow: ${({ theme }) => {
+//     return theme.boxShadow;
+//   }};
+// `;
 
 export const Title = styled.h1`
   margin-top: 0;
@@ -41,11 +55,26 @@ export const Title = styled.h1`
   text-transform: uppercase;
 `;
 
-export const SectionTitle = styled.h2`
+const sectionTitleDynamicStyle = ({ theme }) => css`
   margin: 0;
   text-align: center;
   font-size: 28px;
-  color: ${({ theme }) => {
-    return theme.colors.mainColor;
-  }};
+  color: ${theme.colors.mainColor};
+`;
+
+// export const SectionTitle = styled.h2`
+//   margin: 0;
+//   text-align: center;
+//   font-size: 28px;
+//   color: ${({ theme }) => {
+//     return theme.colors.mainColor;
+//   }};
+// `;
+
+export const Section = styled.section`
+  ${sectionDynamicStyle}
+`;
+
+export const SectionTitle = styled.h2`
+  ${sectionTitleDynamicStyle}
 `;
