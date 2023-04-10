@@ -22,12 +22,17 @@ const authPersistConfig = {
   whitelist: ['token'],
 };
 
+const themePersistConfig = {
+  key: 'theme',
+  storage,
+};
+
 export const store = configureStore({
   reducer: {
     auth: persistReducer(authPersistConfig, authReducer),
     [contactsApi.reducerPath]: contactsApi.reducer,
     filter: filterSlice.reducer,
-    theme: themeSlice.reducer,
+    theme: persistReducer(themePersistConfig, themeSlice.reducer) ,
   },
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({
@@ -36,7 +41,7 @@ export const store = configureStore({
       },
     }).concat(contactsApi.middleware),
 
-    devTools: process.env.NODE_ENV === 'development',
+  devTools: process.env.NODE_ENV === 'development',
 });
 
 setupListeners(store.dispatch);

@@ -14,8 +14,7 @@ function UserMenu() {
   return (
     <>
       {isLoggedIn && (
-        <UserMenuWrapper>
-          {/* add interesting icon */}
+        <UserMenuWrapper>  
           <UserName>{user.name}</UserName>
           <LogOutButton type="button" onClick={handleLogout}>
             Log out

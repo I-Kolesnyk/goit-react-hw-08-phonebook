@@ -10,17 +10,6 @@ const styledLoaderDynamicStyle = ({theme}) => css`
   color: ${theme.colors.mainColor};
 `
 
-// export const StyledLoader = styled.div`
-//   position: fixed;
-//   top: 50%;
-//   left: 50%;
-//   transform: translate(-50%, -50%);
-//   z-index: 99;
-//   color: ${({ theme }) => {
-//     return theme.colors.mainColor;
-//   }};
-// `;
-
 export const StyledLoader = styled.div`
   ${styledLoaderDynamicStyle}
 `

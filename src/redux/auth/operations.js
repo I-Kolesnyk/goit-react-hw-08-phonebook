@@ -59,7 +59,7 @@ export const userRefresh = createAsyncThunk(
     const currentToken = state.auth.token;
 
     if (currentToken === null) {
-      return thunkAPI.rejectWithValue(toast.info('Please log in!'));
+      return thunkAPI.rejectWithValue('');
     }
     token.set(currentToken);
 
