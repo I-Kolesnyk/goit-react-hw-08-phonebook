@@ -19,6 +19,7 @@ const labelDynamicStyle = ({theme}) => css`
     border: 2px solid ${theme.colors.mainColor};
     border-radius: ${theme.borderRadius};
     background-color: ${theme.colors.accentColor};
+    color: ${theme.colors.secondaryBackgroundColor};
     width: 100%;
     font-size: 16px;
     &::first-letter {

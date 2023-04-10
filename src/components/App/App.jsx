@@ -1,9 +1,9 @@
 import { Routes, Route } from 'react-router-dom';
 import { lazy, useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import PublicRoute from 'components/PublicRoute';
 import PrivateRoute from 'components/PrivateRoute';
-import { selectIsFetchingCurrentUser } from 'redux/auth/selectors';
+import { useFetchingCurrentUser } from 'hooks';
 import { userRefresh } from 'redux/auth/operations';
 
 import Layout from 'components/Layout';
@@ -15,8 +15,7 @@ const PageNotFound = lazy(() => import('pages/NotFound'));
 
 function App() {
   const dispatch = useDispatch();
-
-  const isFetchingCurrentUser = useSelector(selectIsFetchingCurrentUser);
+  const isFetchingCurrentUser = useFetchingCurrentUser();
 
   useEffect(() => {
     dispatch(userRefresh());

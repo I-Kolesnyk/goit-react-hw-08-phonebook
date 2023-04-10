@@ -1,8 +1,6 @@
 import { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
-import { useSelector } from 'react-redux';
-import { selectIsLoggedIn } from 'redux/auth/selectors';
-import { selectTheme } from 'redux/theme/selectors';
+import { useIsLoggedIn, useTheme } from 'hooks';
 import { Global, ThemeProvider } from '@emotion/react';
 import { GlobalStyles } from 'styles/GlobalStyles';
 import { theme } from 'styles/Theme.styled';
@@ -25,8 +23,8 @@ import {
 } from './Layout.styled';
 
 function Layout() {
-  const isLoggedIn = useSelector(selectIsLoggedIn);
-  const themeMode = useSelector(selectTheme);
+  const isLoggedIn = useIsLoggedIn();
+  const themeMode = useTheme();
 
   return (
     <ThemeProvider theme={theme[themeMode]}>

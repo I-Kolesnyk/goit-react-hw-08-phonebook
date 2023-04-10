@@ -1,12 +1,11 @@
 import { useMemo } from 'react';
-import { useSelector } from 'react-redux';
 import ContactItem from 'components/ContactItem';
-import { selectFilterValue } from 'redux/filter/selectors';
+import { useFilterValue } from 'hooks';
 import { useFetchContactsQuery } from 'services/contactsApi';
 import { List } from './ContactList.styled';
 
 function ContactList() {
-  const filterValue = useSelector(selectFilterValue);
+  const filterValue = useFilterValue();
 
   const { data: contacts } = useFetchContactsQuery();
 

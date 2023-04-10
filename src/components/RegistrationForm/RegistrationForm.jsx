@@ -1,31 +1,15 @@
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import * as yup from 'yup';
 import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import { userSignUp } from 'redux/auth/operations';
-
+import { registrationFormSchema } from 'schemas';
 import {
   StyledLabel,
   StyledForm,
   StyledInput,
   StyledButton,
 } from './RegistrationForm.styled';
-
-const emailRegex =
-  /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-
-const schema = yup.object().shape({
-  name: yup.string().trim().required('Name is required'),
-  email: yup.string().trim().required('Email is required').matches(emailRegex, {
-    message: 'Invalid email.',
-  }),
-  password: yup
-    .string()
-    .trim()
-    .required('Password is required')
-    .min(8),
-});
 
 function RegistrationForm() {
   const dispatch = useDispatch();
@@ -42,7 +26,7 @@ function RegistrationForm() {
       email: '',
       password: '',
     },
-    resolver: yupResolver(schema),
+    resolver: yupResolver(registrationFormSchema),
     mode: 'onTouched',
   });
 

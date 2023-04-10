@@ -1,11 +1,11 @@
-import { useSelector, useDispatch } from 'react-redux';
-import { selectIsLoggedIn, selectUser } from 'redux/auth/selectors';
+import { useDispatch } from 'react-redux';
 import { userSignOut } from 'redux/auth/operations';
+import { useIsLoggedIn, useUser } from 'hooks';
 import { UserName, LogOutButton, UserMenuWrapper } from './UserMenu.styled';
 
 function UserMenu() {
-  const isLoggedIn = useSelector(selectIsLoggedIn);
-  const user = useSelector(selectUser);
+  const isLoggedIn = useIsLoggedIn();
+  const user = useUser();
   const dispatch = useDispatch();
 
   const handleLogout = () => {

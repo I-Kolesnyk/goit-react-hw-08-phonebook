@@ -1,10 +1,12 @@
 import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import * as yup from 'yup';
 import { toast } from 'react-toastify';
-import { useAddContactMutation, useFetchContactsQuery } from 'services/contactsApi';
-
+import { contactFormSchema } from 'schemas';
+import {
+  useAddContactMutation,
+  useFetchContactsQuery,
+} from 'services/contactsApi';
 import {
   StyledLabel,
   StyledForm,
@@ -12,36 +14,10 @@ import {
   StyledButton,
 } from './ContactForm.styled';
 
-const nameRegex = /^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$/;
-
-const numberRegex =
-  /\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}/;
-
-const schema = yup.object().shape({
-  name: yup
-    .string()
-    .trim()
-    .max(64)
-    .required('Name is required')
-    .matches(nameRegex, {
-      message:
-        "Invalid name. Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan.",
-    }),
-
-  number: yup
-    .string()
-    .trim()
-    .required('Number is required')
-    .min(5)
-    .matches(numberRegex, {
-      message:
-        'Invalid number. Phone number must be digits and can contain spaces, dashes, parentheses and can start with +.',
-    }),
-});
-
 function ContactForm() {
   const { data: contacts } = useFetchContactsQuery();
   const [addContact] = useAddContactMutation();
+  
   const {
     register,
     handleSubmit,
@@ -53,7 +29,7 @@ function ContactForm() {
       name: '',
       number: '',
     },
-    resolver: yupResolver(schema),
+    resolver: yupResolver(contactFormSchema),
     mode: 'onTouched',
   });
 
@@ -66,18 +42,15 @@ function ContactForm() {
   const addNewContact = async data => {
     const normalizedName = data.name.toLowerCase();
 
-    if (
-      contacts.find(item => item.name.toLowerCase() === normalizedName)
-    ) {
+    if (contacts.find(item => item.name.toLowerCase() === normalizedName)) {
       return toast.info(`${data.name} is already in contacts!`);
     }
     try {
       await addContact(data);
       toast.info('New contact has been added in your phone book');
     } catch (error) {
-      console.log(error.message);
       toast.error('Something has happened, new contact was not added');
-    }       
+    }
   };
 
   return (
@@ -104,7 +77,7 @@ function ContactForm() {
         {errors.number && <div>{errors.number?.message}</div>}
       </StyledLabel>
 
-      <StyledButton type="submit" >Send</StyledButton>
+      <StyledButton type="submit">Send</StyledButton>
     </StyledForm>
   );
 }
