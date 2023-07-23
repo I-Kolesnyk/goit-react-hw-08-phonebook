@@ -10,12 +10,12 @@ const containerDynamicStyle = ({ theme }) => css`
   gap: 30px;
   max-width: 320px;
   margin: 0 auto;
-  padding: 0 20px;
-  ${theme.breakPoinrs.tablet} {
+  padding: 10px 20px;
+  ${theme.breakPoints.tablet} {
     max-width: 768px;
-    padding: 0 32px;
+    padding: 20px 32px;
   }
-  ${theme.breakPoinrs.desktop} {
+  ${theme.breakPoints.desktop} {
     max-width: 1200px;
   }
 `;
